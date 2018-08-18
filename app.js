@@ -17,10 +17,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     let validUser = false;
     firebase.database().ref('Authorized Members').on('value', function(snapshot) {
       for (var i in snapshot.val() )
-        if(snapshot.val()[i]){
+        if(snapshot.val()[i]==user.email){
           validUser = true;
           break;
         }
+      console.log(validUser);
       if(validUser){
         window.location.href = "file:///C:/Users/karth/Documents/GitHub/750s/TeamInfo/index.html";
       }else{
