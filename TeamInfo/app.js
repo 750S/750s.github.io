@@ -1,11 +1,9 @@
 firebase.initializeApp({apiKey: "AIzaSyCoG_una82nRQEDDwlnLS2Br_fLlEolNeM",authDomain: "sparks-750.firebaseapp.com",databaseURL: "https://sparks-750.firebaseio.com",projectId: "sparks-750",storageBucket: "",messagingSenderId: "765237982504"});
-var provider = new firebase.auth.GoogleAuthProvider();
-//firebase.auth().languageCode = 'pt';
 
-let signInBtn = document.getElementById("sign-in");
+let signOutBtn = document.getElementById("sign-out");
 
-signInBtn.addEventListener("click", function(){
-    firebase.auth().signInWithRedirect(provider);
+signOutBtn.addEventListener("click", function(){
+    firebase.auth().signOut();
 });
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -20,19 +18,17 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
       console.log(validUser);
       if(validUser){
-        window.location.href = "https://750s.github.io/TeamInfo";
+
       }else{
         $("#notauthorized").slideDown(100,function(){
           $("#notauthorized").slideUp(100);
         });
         firebase.auth().signOut();
+        window.location.href = "https://750s.github.io/";
       }
     });
   }else{
     console.log("SIGNED OUT");
+    //window.location.href = "https://750s.github.io/";
   }
-});
-
-firebase.database().ref('Authorized Members').update({
-
 });

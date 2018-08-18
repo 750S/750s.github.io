@@ -9,6 +9,9 @@
   padding:0;
   border:0;
 }
+.alert{
+  display:none;
+}
 
 .google-button {
   height: 60px;
@@ -51,4 +54,18 @@
   font-size: 30px;
   font-weight: bold;
   font-family: 'Roboto',arial,sans-serif;
+}
+
+.role {
+  color:#E0E0E0;
+  font-style:italic;
+  margin-top:3px;
+}
+
+.card-body{
+  padding-top:3px!important;
+}
+
+.card-img-top {
+
 }
