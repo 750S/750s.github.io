@@ -164,8 +164,8 @@ function timeHour(tim){
   if((tim.includes("PM")||tim.includes("pm"))&&d!=12)
     d+=12
     if(d==12&&tim.includes("AM"))
-      d+=12
-    
+      d-=12
+
   if(d<10)
     return "0"+d;
   return""+d;
