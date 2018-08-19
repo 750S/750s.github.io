@@ -137,6 +137,18 @@ function checkDate() {
           purpose.value=row[1];
           meetingStart.value=time(row[2]);
           meetingEnd.value=time(row[3]);
+          if(row[2]){
+            if(row[3]){}
+              meetingStart.value=time(row[2]);
+              meetingEnd.value=time(row[3]);
+            }else{
+              meetingStart.value=time(row[2]);
+              meetingEnd.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
+            }
+          }else{
+            meetingStart.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
+            meetingEnd.value="";
+          }
         }
       }
       if(indexToChange==0){
