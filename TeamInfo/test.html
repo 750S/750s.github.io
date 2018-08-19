@@ -9,7 +9,6 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
 
     <pre id="content"></pre>
 
@@ -26,7 +25,6 @@
       var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
 
       var authorizeButton = document.getElementById('authorize_button');
-      var signoutButton = document.getElementById('signout_button');
 
       /**
        *  On load, called to load the auth2 library and API client library.
@@ -60,16 +58,14 @@
        *  Called when the signed in status changes, to update the UI
        *  appropriately. After a sign-in, the API is called.
        */
-       listMajors();
+
       function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
-          signoutButton.style.display = 'block';
           listMajors();
           makeApiCall();
         } else {
           authorizeButton.style.display = 'block';
-          signoutButton.style.display = 'none';
         }
       }
 
@@ -105,44 +101,33 @@
        */
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-          range: 'Class Data!A2:E',
+          spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
+          range: 'Meetings!A1:A',
         }).then(function(response) {
           var range = response.result;
-          if (range.values.length > 0) {
-            appendPre('Name, Major:');
+          console.log(range.values.length);
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns A and E, which correspond to indices 0 and 4.
-              appendPre(row[0] + ', ' + row[4]);
+              appendPre(row[0]);
             }
-          } else {
-            appendPre('No data found.');
           }
         }, function(response) {
-          appendPre('Error: ' + response.result.error.message);
+          console.log('Error: ' + response.result.error.message);
         });
       }
 
 
       function makeApiCall() {
         var params = {
-          // The ID of the spreadsheet to update.
           spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
-
-          // The A1 notation of a range to search for a logical table of data.
-          // Values will be appended after the last row of the table.
-          range: 'Sheet1!A1:D5',  // TODO: Update placeholder value.
-
-          // How the input data should be interpreted.
-          valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
-
-          // How the input data should be inserted.
-          insertDataOption: 'INSERT_ROWS',  // TODO: Update placeholder value.
+          range: 'Meetings!A1:D1',
+          valueInputOption: 'USER_ENTERED',
+          insertDataOption: 'INSERT_ROWS',
         };
         var d = new Date();
         var valueRangeBody = {
-          "range": "Sheet1!A1:D5",
+          "range": "Meetings!A1:D1",
           "majorDimension": "ROWS",
           "values": [
             [d.toLocaleDateString(), "to do stuff", d.getHours()+":"+d.getMinutes(), d.getHours()+":"+d.getMinutes()]
