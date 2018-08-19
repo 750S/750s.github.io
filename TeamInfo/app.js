@@ -122,7 +122,7 @@ dateInput.value = (new Date()).getFullYear()+"-"+fmonths+"-"+fdays;
 
 let indexToChange = 0;
 function checkDate() {
-  var meetingDate = new Date(new Date(dateInput.value)+14401);
+  var meetingDate = new Date(dateInput.value)+new Date(14401);
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
     range: 'Meetings!A1:D',
@@ -139,7 +139,7 @@ function checkDate() {
         }
       }
       if(indexToChange==0)
-        indexToChange=i+2;
+        indexToChange=i+1;
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
