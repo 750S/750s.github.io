@@ -238,7 +238,7 @@ function makeApiCall() {
     ],
   };
 
-  var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+  var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
   request.then(function(response) {
     // TODO: Change code below to process the `response` object:
     console.log(response.result);
