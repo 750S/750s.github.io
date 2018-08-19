@@ -140,6 +140,7 @@ function checkDate() {
           meetingStart.value=time(row[2]);
           meetingEnd.value=time(row[3]);
           if(row[2]){
+            console.log(row[2]);
             if(row[3]){
               meetingStart.value=time(row[2]);
               meetingEnd.value=time(row[3]);
@@ -178,12 +179,9 @@ function checkDate() {
                       start.value=time(row[0]);
                       end.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
                     }
-                  }else{
-                    start.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
-                    end.value="";
                   }
                 }else{
-                  start.value="";
+                  start.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
                   end.value="";
                 }
             }, function(response) {
