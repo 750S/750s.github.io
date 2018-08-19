@@ -252,7 +252,7 @@ function makeApiCall() {
       spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
       range: name.value+'!E'+indexToChange+':F'+indexToChange,
       valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'OVERWRITE',
+      //insertDataOption: 'OVERWRITE',
     };
     var d = new Date();
     var valueRangeBody = {
@@ -263,7 +263,7 @@ function makeApiCall() {
       ],
     };
 
-    var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+    var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
     request.then(function(response) {
       // TODO: Change code below to process the `response` object:
       console.log(response.result);
