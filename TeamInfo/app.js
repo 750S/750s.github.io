@@ -168,6 +168,7 @@ function checkDate() {
               console.log(range.values.length);
                   var row = range.values[0];
                   if(row[0]){
+                    console.log(row[0]);
                     if(row[1]){
                       start.value=time(row[0]);
                       end.value=time(row[1]);
@@ -222,13 +223,13 @@ function time(tim){
 function makeApiCall() {
   var params = {
     spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
-    range: 'Meetings!A1:D1',
-    valueInputOption: 'USER_ENTERED',
+    range: 'Meetings!A'+indexToChange+':D'+indexToChange,
+    valueInputOption: 'OVERWRITE',
     insertDataOption: 'INSERT_ROWS',
   };
   var d = new Date();
   var valueRangeBody = {
-    "range": "Meetings!A1:D1",
+    "range": 'Meetings!A'+indexToChange+':D'+indexToChange,
     "majorDimension": "ROWS",
     "values": [
       [d.toLocaleDateString(), "to do stuff", d.getHours()+":"+d.getMinutes(), d.getHours()+":"+d.getMinutes()]
