@@ -103,9 +103,11 @@ let start = document.getElementById("start-time-input");
 let end = document.getElementById("end-time-input");
 let name = document.getElementById("name");
 let purpose = document.getElementById("purpose-text-input");
+let submit = document.getElementById("submit");
+
 dateInput.addEventListener('change',checkDate);
 name.addEventListener('change',checkDate);
-
+submit.addEventListener('click',makeApiCall);
 let months = ((new Date()).getMonth()+1);
 if(months<10)
   fmonths="0"+months;
@@ -232,7 +234,32 @@ function makeApiCall() {
     "range": 'Meetings!A'+indexToChange+':D'+indexToChange,
     "majorDimension": "ROWS",
     "values": [
-      [d.toLocaleDateString(), "to do stuff", d.getHours()+":"+d.getMinutes(), d.getHours()+":"+d.getMinutes()]
+      [dateInput.value, purpose.value, meetingStart.value, meetingEnd.value]
+    ],
+  };
+
+  var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+  request.then(function(response) {
+    // TODO: Change code below to process the `response` object:
+    console.log(response.result);
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });
+
+
+
+  var params = {
+    spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
+    range: name.value+'!E'+indexToChange+':F'+indexToChange,
+    valueInputOption: 'OVERWRITE',
+    insertDataOption: 'INSERT_ROWS',
+  };
+  var d = new Date();
+  var valueRangeBody = {
+    "range": name.value+'!E'+indexToChange+':F'+indexToChange,
+    "majorDimension": "ROWS",
+    "values": [
+      [start.value, end.value]
     ],
   };
 
