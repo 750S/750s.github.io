@@ -18,7 +18,12 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
       console.log(validUser);
       if(validUser){
-          console.log(user.getDisplayName().split(' ')[0]);
+          console.log(user.displayName().split(' ')[0]);
+          names=["Karthik","Nicholas","Tanav","Suchit","Jason","Suhruth","Abimanyu","Vijay","Tejas"];
+          for(let z =0;z!=9;z++)
+            if(names[z]==user.displayName().split(' ')[0]){
+              name.value=names[z];
+            }
       }else{
         $("#notauthorized").slideDown(100,function(){
           $("#notauthorized").slideUp(100);
