@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
       console.log(validUser);
       if(validUser){
-          console.log(user.getDisplayName().split(' ')[0]):
+          console.log(user.getDisplayName().split(' ')[0]);
       }else{
         $("#notauthorized").slideDown(100,function(){
           $("#notauthorized").slideUp(100);
