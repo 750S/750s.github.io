@@ -146,7 +146,7 @@ function checkDate() {
   if(name.value!="Select Name")
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
-    range: name+'!E'+indexToChange+':F'+indexToChange,
+    range: name.value+'!E'+indexToChange+':F'+indexToChange,
   }).then(function(response) {
     var range = response.result;
     console.log(range.values.length);
