@@ -139,8 +139,8 @@ function checkDate() {
           purpose.value=row[1];
           meetingStart.value=time(row[2]);
           meetingEnd.value=time(row[3]);
+          console.log(row[2]);
           if(row[2]){
-            console.log(row[2]);
             if(row[3]){
               meetingStart.value=time(row[2]);
               meetingEnd.value=time(row[3]);
