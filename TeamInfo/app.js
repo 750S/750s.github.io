@@ -142,9 +142,6 @@ function checkDate() {
         if((new Date(row[0])).toLocaleDateString()==meetingDate.toLocaleDateString()){
           indexToChange=i+1;
           purpose.value=row[1];
-          meetingStart.value=time(row[2]);
-          meetingEnd.value=time(row[3]);
-          console.log(row[2]);
           if(row[2]){
             if(row[3]){
               meetingStart.value=time(row[2]);
