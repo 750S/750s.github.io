@@ -155,10 +155,10 @@ function checkDate() {
       range: name.value+'!E'+indexToChange+':F'+indexToChange,
     }).then(function(response) {
       var range = response.result;
+      console.log(range.values);
       if(range.values){
       console.log(range.values.length);
           var row = range.values[0];
-          console.log(row[0]);
           start.value=time(row[0]);
           end.value=time(row[1]);
         }else{
