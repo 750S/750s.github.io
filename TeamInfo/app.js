@@ -127,6 +127,7 @@ function checkDate() {
     spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
     range: 'Meetings!A1:D',
   }).then(function(response) {
+    indexToChange = 0
     var range = response.result;
     console.log(range.values.length);
       for (i = 0; i < range.values.length; i++) {
