@@ -78,10 +78,12 @@ function initClient() {
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
+    signInForm.style.display = 'block';
     checkDate();
-    makeApiCall();
+    //makeApiCall();
   } else {
     authorizeButton.style.display = 'block';
+    signInForm.style.display = 'none';
   }
 }
 
@@ -100,6 +102,9 @@ let meetingEnd = document.getElementById("meeting-end-time-input");
 let start = document.getElementById("start-time-input");
 let end = document.getElementById("end-time-input");
 let name = document.getElementById("name");
+
+dateInput.addEventListener('change',checkDate);
+name.addEventListener('change',checkDate);
 
 let months = ((new Date()).getMonth()+1);
 if(months<10)
@@ -128,9 +133,9 @@ function checkDate() {
         var row = range.values[i];
         console.log(row[0]);
         if((new Date(row[0])).toLocaleDateString()==meetingDate.toLocaleDateString()){
-          indexToChange=i+1
-          meetingStart.value=row[2]
-          meetingEnd.value=row[3]
+          indexToChange=i+1;
+          meetingStart.value=time(row[2]);
+          meetingEnd.value=time(row[3]);
         }
       }
       if(indexToChange==0)
@@ -147,13 +152,32 @@ function checkDate() {
     console.log(range.values.length);
         var row = range.values[0];
         console.log(row[0]);
-        start.value=row[0];
-        end.value=row[1];
+        start.value=time(row[0]);
+        end.value=time(row[1]);
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
 }
 
+function timeHour(tim){
+  var d = parseInt(tim.split(':')[0]);
+  if(tim.includes("PM")||tim.includes("pm"))
+    d+=12
+  if(d<10)
+    return "0"+d;
+  return""+d;
+}
+
+function timeMin(tim){
+  var d = parseInt(tim);
+  if(d<10)
+    return "0"+d;
+  return""+d;
+}
+
+function time(tim){
+  return timeHour(tim)+":"+timeMin(tim.split(':')[1].split(' ')[0]);
+}
 
 function makeApiCall() {
   var params = {
