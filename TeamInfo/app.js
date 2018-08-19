@@ -122,7 +122,7 @@ dateInput.value = (new Date()).getFullYear()+"-"+fmonths+"-"+fdays;
 
 let indexToChange = 0;
 function checkDate() {
-  var meetingDate = new Date(dateInput.value)+14401;
+  var meetingDate = new Date(new Date(dateInput.value)+14401);
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
     range: 'Meetings!A1:D',
