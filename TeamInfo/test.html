@@ -50,7 +50,6 @@
           // Handle the initial sign-in state.
           updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
           authorizeButton.onclick = handleAuthClick;
-          signoutButton.onclick = handleSignoutClick;
         });
       }
 
@@ -99,6 +98,8 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
+
+       var meetingDate = new date();
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
@@ -108,10 +109,10 @@
           console.log(range.values.length);
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              // Print columns A and E, which correspond to indices 0 and 4.
               appendPre(row[0]);
+              if(row[0].toLocaleDateString()==meetingDate.toLocaleDateString())
             }
-          
+
         }, function(response) {
           console.log('Error: ' + response.result.error.message);
         });
