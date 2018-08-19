@@ -148,7 +148,7 @@ function checkDate() {
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
-  console.log(indexToChange):
+  console.log(indexToChange);
   if(name.value!="Select Name"){
     gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
