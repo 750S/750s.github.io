@@ -155,8 +155,18 @@ function checkDate() {
               if(range.values){
               console.log(range.values.length);
                   var row = range.values[0];
-                  start.value=time(row[0]);
-                  end.value=time(row[1]);
+                  if(row[0]){
+                    if(row[1]){}
+                      start.value=time(row[0]);
+                      end.value=time(row[1]);
+                    }else{
+                      start.value=time(row[0]);
+                      end.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
+                    }
+                  }else{
+                    start.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
+                    end.value="";
+                  }
                 }else{
                   start.value="";
                   end.value="";
