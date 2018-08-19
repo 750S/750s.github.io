@@ -127,7 +127,7 @@ function checkDate() {
       for (i = 0; i < range.values.length; i++) {
         var row = range.values[i];
         console.log(row[0]);
-        if(row[0].toLocaleDateString()==meetingDate.toLocaleDateString()){
+        if((new Date(row[0])).toLocaleDateString()==meetingDate.toLocaleDateString()){
           indexToChange=i+1
           meetingStart=row[2]
           meetingEnd=row[3]
