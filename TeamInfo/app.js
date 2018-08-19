@@ -102,7 +102,7 @@ let meetingEnd = document.getElementById("meeting-end-time-input");
 let start = document.getElementById("start-time-input");
 let end = document.getElementById("end-time-input");
 let name = document.getElementById("name");
-
+let purpose = document.getElementById("purpose-text-input");
 dateInput.addEventListener('change',checkDate);
 name.addEventListener('change',checkDate);
 
@@ -134,29 +134,38 @@ function checkDate() {
         console.log(row[0]);
         if((new Date(row[0])).toLocaleDateString()==meetingDate.toLocaleDateString()){
           indexToChange=i+1;
+          purpose.value=row[1];
           meetingStart.value=time(row[2]);
           meetingEnd.value=time(row[3]);
         }
       }
-      if(indexToChange==0)
+      if(indexToChange==0){
         indexToChange=i+1;
+        purpose.value="";
+        meetingStart.value="";
+        meetingEnd.value="";
+      }
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
-  if(name.value!="Select Name")
-  gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
-    range: name.value+'!E'+indexToChange+':F'+indexToChange,
-  }).then(function(response) {
-    var range = response.result;
-    console.log(range.values.length);
-        var row = range.values[0];
-        console.log(row[0]);
-        start.value=time(row[0]);
-        end.value=time(row[1]);
-  }, function(response) {
-    console.log('Error: ' + response.result.error.message);
-  });
+  if(name.value!="Select Name"){
+    gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
+      range: name.value+'!E'+indexToChange+':F'+indexToChange,
+    }).then(function(response) {
+      var range = response.result;
+      console.log(range.values.length);
+          var row = range.values[0];
+          console.log(row[0]);
+          start.value=time(row[0]);
+          end.value=time(row[1]);
+    }, function(response) {
+      console.log('Error: ' + response.result.error.message);
+    });
+  }else {
+    start.value="";
+    end.value="";
+  }
 }
 
 function timeHour(tim){
