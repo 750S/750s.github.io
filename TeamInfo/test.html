@@ -23,7 +23,7 @@
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+      var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
 
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
@@ -60,11 +60,13 @@
        *  Called when the signed in status changes, to update the UI
        *  appropriately. After a sign-in, the API is called.
        */
+       listMajors();
       function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
           listMajors();
+          makeApiCall();
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -122,6 +124,43 @@
         });
       }
 
+
+      function makeApiCall() {
+        var params = {
+          // The ID of the spreadsheet to update.
+          spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
+
+          // The A1 notation of a range to search for a logical table of data.
+          // Values will be appended after the last row of the table.
+          range: 'A1',  // TODO: Update placeholder value.
+
+          // How the input data should be interpreted.
+          valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
+
+          // How the input data should be inserted.
+          insertDataOption: 'INSERT_ROWS',  // TODO: Update placeholder value.
+        };
+
+        var valueRangeBody = {
+          "range": "Sheet1!A1:D5",
+          "majorDimension": "ROWS",
+          "values": [
+            ["Item", "Cost", "Stocked", "Ship Date"],
+            ["Wheel", "$20.50", "4", "3/1/2016"],
+            ["Door", "$15", "2", "3/15/2016"],
+            ["Engine", "$100", "1", "30/20/2016"],
+            ["Totals", "=SUM(B2:B4)", "=SUM(C2:C4)", "=MAX(D2:D4)"]
+          ],
+        };
+
+        var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+        request.then(function(response) {
+          // TODO: Change code below to process the `response` object:
+          console.log(response.result);
+        }, function(reason) {
+          console.error('error: ' + reason.result.error.message);
+        });
+      }
     </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
