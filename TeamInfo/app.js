@@ -224,8 +224,8 @@ function makeApiCall() {
   var params = {
     spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
     range: 'Meetings!A'+indexToChange+':D'+indexToChange,
-    valueInputOption: 'OVERWRITE',
-    insertDataOption: 'INSERT_ROWS',
+    valueInputOption: 'USER_ENTERED',
+    insertDataOption: 'OVERWRITE',
   };
   var d = new Date();
   var valueRangeBody = {
@@ -245,27 +245,28 @@ function makeApiCall() {
   });
 
 
+  if(name.value!="Select Name"){
+    var params = {
+      spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
+      range: name.value+'!E'+indexToChange+':F'+indexToChange,
+      valueInputOption: 'USER_ENTERED',
+      insertDataOption: 'OVERWRITE',
+    };
+    var d = new Date();
+    var valueRangeBody = {
+      "range": name.value+'!E'+indexToChange+':F'+indexToChange,
+      "majorDimension": "ROWS",
+      "values": [
+        [start.value, end.value]
+      ],
+    };
 
-  var params = {
-    spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
-    range: name.value+'!E'+indexToChange+':F'+indexToChange,
-    valueInputOption: 'OVERWRITE',
-    insertDataOption: 'INSERT_ROWS',
-  };
-  var d = new Date();
-  var valueRangeBody = {
-    "range": name.value+'!E'+indexToChange+':F'+indexToChange,
-    "majorDimension": "ROWS",
-    "values": [
-      [start.value, end.value]
-    ],
-  };
-
-  var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-  request.then(function(response) {
-    // TODO: Change code below to process the `response` object:
-    console.log(response.result);
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
+    var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+    request.then(function(response) {
+      // TODO: Change code below to process the `response` object:
+      console.log(response.result);
+    }, function(reason) {
+      console.error('error: ' + reason.result.error.message);
+    });
+  }
 }
