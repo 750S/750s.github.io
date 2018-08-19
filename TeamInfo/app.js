@@ -139,7 +139,7 @@ function checkDate() {
         }
       }
       if(indexToChange==0)
-        indexToChange=i+1;
+        indexToChange=i+2;
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
