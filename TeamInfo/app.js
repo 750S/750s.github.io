@@ -23,7 +23,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           for(let z =0;z!=9;z++)
             if(names[z]==user.displayName.split(' ')[0]){
               name.value=names[z];
-              checkDate():
+              checkDate();
             }
       }else{
         $("#notauthorized").slideDown(100,function(){
