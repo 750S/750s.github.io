@@ -157,7 +157,7 @@ function checkDate() {
       if(indexToChange==0){
         indexToChange=i+1;
         purpose.value="";
-        meetingStart.value="";
+        meetingStart.value=time((new Date()).getHours()+":"+(new Date()).getMinutes());
         meetingEnd.value="";
       }
           if(name.value!="Select Name"){
