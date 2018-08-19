@@ -129,8 +129,8 @@ function checkDate() {
         console.log(row[0]);
         if((new Date(row[0])).toLocaleDateString()==meetingDate.toLocaleDateString()){
           indexToChange=i+1
-          meetingStart=row[2]
-          meetingEnd=row[3]
+          meetingStart.value=row[2]
+          meetingEnd.value=row[3]
         }
       }
       if(indexToChange==0)
@@ -147,8 +147,8 @@ function checkDate() {
     console.log(range.values.length);
         var row = range.values[0];
         console.log(row[0]);
-        start=row[0];
-        end=row[1];
+        start.value=row[0];
+        end.value=row[1];
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
