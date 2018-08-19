@@ -161,8 +161,11 @@ function checkDate() {
 
 function timeHour(tim){
   var d = parseInt(tim.split(':')[0]);
-  if(tim.includes("PM")||tim.includes("pm"))
+  if((tim.includes("PM")||tim.includes("pm"))&&d!=12)
     d+=12
+    if(d==12&&tim.includes("AM"))
+      d+=12
+    
   if(d<10)
     return "0"+d;
   return""+d;
