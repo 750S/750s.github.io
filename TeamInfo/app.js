@@ -132,7 +132,6 @@ function checkDate() {
     console.log(range.values.length);
       for (i = 0; i < range.values.length; i++) {
         var row = range.values[i];
-        console.log(row[0]);
         if((new Date(row[0])).toLocaleDateString()==meetingDate.toLocaleDateString()){
           indexToChange=i+1;
           purpose.value=row[1];
@@ -149,6 +148,7 @@ function checkDate() {
   }, function(response) {
     console.log('Error: ' + response.result.error.message);
   });
+  console.log(indexToChange):
   if(name.value!="Select Name"){
     gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
