@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
       console.log(validUser);
       if(validUser){
-
+          console.log(user.getDisplayName().split(' ')[0]):
       }else{
         $("#notauthorized").slideDown(100,function(){
           $("#notauthorized").slideUp(100);
@@ -269,4 +269,5 @@ function makeApiCall() {
       console.error('error: ' + reason.result.error.message);
     });
   }
+  $("#signInForm").slideUp();
 }
