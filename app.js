@@ -22,9 +22,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       if(validUser){
         window.location.href = "https://750s.github.io/TeamInfo";
       }else{
-        $("#notauthorized").slideDown(100,function(){
-          $("#notauthorized").slideUp(100);
-        });
+        $("#notauthorized").slideDown(500).delay( 3000 ).slideUp(500);
         firebase.auth().signOut();
       }
     });
