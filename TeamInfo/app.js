@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
   }else{
     console.log("SIGNED OUT");
-    //window.location.href = "https://750s.github.io/";
+    window.location.href = "https://750s.github.io/"; //comment this to test site locally
   }
 });
 
