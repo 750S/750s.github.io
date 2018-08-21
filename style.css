@@ -15,6 +15,7 @@
 
 .google-button {
   height: 60px;
+  max-width:100%;
   border-width: 0;
   background: #F0F0F0;
   color: #737373;
@@ -42,8 +43,8 @@
   display: inline-block;
   vertical-align: middle;
   margin: 8px 0 8px 8px;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   box-sizing: border-box;
 }
 
@@ -51,7 +52,7 @@
   display: inline-block;
   vertical-align: middle;
   padding: 0 24px;
-  font-size: 30px;
+  font-size: 3vw;
   font-weight: bold;
   font-family: 'Roboto',arial,sans-serif;
 }
