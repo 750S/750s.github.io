@@ -11,6 +11,7 @@
 }
 .alert{
   display:none;
+  margin:0px;
 }
 
 .google-button {
