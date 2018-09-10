@@ -79,3 +79,7 @@
 .card-img-top {
   object-fit: cover;
 }
+
+#teamBuilding {
+  background-color: #808080;
+}
