@@ -75,3 +75,7 @@
 .container-fluid {
   background-color: #A9A9A9;
 }
+
+.card-img-top {
+  object-fit: cover;
+}
