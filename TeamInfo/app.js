@@ -130,7 +130,7 @@ dateInput.value = (new Date()).getFullYear()+"-"+fmonths+"-"+fdays;
 
 let indexToChange = 0;
 function checkDate() {
-  var meetingDate = new Date(new Date(dateInput.value).getTime()+14400001);  //brute forced to account for -4 GMT
+  var meetingDate = new Date(new Date(dateInput.value).getTime()+18000001);  //brute forced to account for -4 GMT
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1sQEUZihySTvP9HQtsVo6jPnoPgL0GHaunPfJX7rtiMk',
     range: 'Meetings!A1:D',
