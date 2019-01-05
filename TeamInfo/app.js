@@ -276,9 +276,9 @@ function makeApiCall() {
 }
 
 function ontimeIN(){
-  meetingStart.value = start.value;
+  start.value = meetingStart.value;
 }
 
 function ontimeOut(){
-  meetingEnd.value = end.value;
+  end.value = meetingEnd.value;
 }
