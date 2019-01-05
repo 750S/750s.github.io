@@ -73,14 +73,17 @@
         <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
           <label for="example-time-input" class="col-form-label" style="display:inline;">Time In:</label>
           <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="start-time-input">
+          <input class="form-control" type="time" style="display:inline; margin-top:6px;">
         </div>
         <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
           <label for="example-time-input" class="col-form-label" style="display:inline;">Time Out:</label>
           <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="end-time-input">
+          <button class="form-control" type="checkbox" style="display:inline; margin-top:6px;" onclick="ontimeIN()">Set to meeting start?</button>
         </div>
         <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
           <label for="example-time-input" class="col-form-label" style="display:inline;">Meeting Start Time:</label>
           <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="meeting-start-time-input">
+          <button class="form-control" type="checkbox" style="display:inline; margin-top:6px;" onclick="ontimeOut()">Set to meeting end?</button>
         </div>
         <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
           <label for="example-time-input" class="col-form-label" style="display:inline;">Meeting End Time:</label>

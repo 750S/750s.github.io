@@ -274,3 +274,11 @@ function makeApiCall() {
   }
   $("#signInForm").slideUp();
 }
+
+function ontimeIN(){
+  meetingStart.value = start.value;
+}
+
+function ontimeOut(){
+  meetingEnd.value = end.value;
+}
