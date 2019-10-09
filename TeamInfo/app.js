@@ -132,7 +132,7 @@ let indexToChange = 0;
 function checkDate() {
   var meetingDate = new Date(new Date(dateInput.value).getTime()+18000001);  //brute forced to account for -4 GMT
   gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: '1sQEUZihySTvP9HQtsVo6jPnoPgL0GHaunPfJX7rtiMk',
+    spreadsheetId: '1wZ7Hx6C9Ax2eaJgRfcMiKu3uRi5WfftInKDgCnPf7aw',
     range: 'Meetings!A1:D',
   }).then(function(response) {
     indexToChange = 0
@@ -165,7 +165,7 @@ function checkDate() {
       }
           if(name.value!="Select Name"){
             gapi.client.sheets.spreadsheets.values.get({
-              spreadsheetId: '1sQEUZihySTvP9HQtsVo6jPnoPgL0GHaunPfJX7rtiMk',
+              spreadsheetId: '1wZ7Hx6C9Ax2eaJgRfcMiKu3uRi5WfftInKDgCnPf7aw',
               range: name.value+'!E'+indexToChange+':F'+indexToChange,
             }).then(function(response) {
               var range = response.result;
@@ -225,7 +225,7 @@ function time(tim){
 
 function makeApiCall() {
   var params = {
-    spreadsheetId: '1sQEUZihySTvP9HQtsVo6jPnoPgL0GHaunPfJX7rtiMk',  // TODO: Update placeholder value.
+    spreadsheetId: '1wZ7Hx6C9Ax2eaJgRfcMiKu3uRi5WfftInKDgCnPf7aw',  // TODO: Update placeholder value.
     range: 'Meetings!A'+indexToChange+':D'+indexToChange,
     valueInputOption: 'USER_ENTERED',
     //insertDataOption: 'OVERWRITE',
@@ -250,7 +250,7 @@ function makeApiCall() {
 
   if(name.value!="Select Name"){
     var params = {
-      spreadsheetId: '1sQEUZihySTvP9HQtsVo6jPnoPgL0GHaunPfJX7rtiMk',  // TODO: Update placeholder value.
+      spreadsheetId: '1wZ7Hx6C9Ax2eaJgRfcMiKu3uRi5WfftInKDgCnPf7aw',  // TODO: Update placeholder value.
       range: name.value+'!E'+indexToChange+':F'+indexToChange,
       valueInputOption: 'USER_ENTERED',
       //insertDataOption: 'OVERWRITE',
