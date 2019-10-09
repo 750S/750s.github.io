@@ -1,0 +1,94 @@
+#navbarBtn:hover{
+  background-color: white!important;
+  color:black!important;
+}
+
+#navbarLink{
+  background-color: transparent;
+  margin: 0;
+  padding:0;
+  border:0;
+}
+.alert{
+  display:none;
+  margin:0px;
+}
+
+.google-button {
+  height: 60px;
+  max-width:100%;
+  border-width: 0;
+  background: #F0F0F0;
+  color: #737373;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0;
+
+  &:focus,
+  &:hover {
+    box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+  }
+
+  &:active {
+    background-color: #e5e5e5;
+    box-shadow: none;
+    transition-duration: 10ms;
+  }
+}
+
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 8px 0 8px 8px;
+  width: 28px;
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.google-button__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 24px;
+  font-size: 3vw;
+  font-weight: bold;
+  font-family: 'Roboto',arial,sans-serif;
+}
+
+.role {
+  color:#E0E0E0;
+  font-style:italic;
+  margin-top:3px;
+}
+
+.card-body{
+  padding-top:3px!important;
+}
+
+.carousel-control-prev {
+  color:black;
+}
+
+.container-fluid {
+  background-color: #A9A9A9;
+}
+
+.card-img-top {
+  object-fit: cover;
+}
+
+#teamBuilding {
+  background-color: #808080;
+}
+
+.carousel-inner{
+  background-color: black;
+}
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}

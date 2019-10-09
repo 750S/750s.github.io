@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Sheets API Quickstart</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>Google Sheets API Quickstart</p>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" style="display: none;">Authorize</button>
+
+    <pre id="content"></pre>
+
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '765237982504-fmpu7ubluouhpst9lmt3kflpihp99mct.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyD9yuWh-tGCXVsjmuVjtFN_11X6BMjtrgM';
+      var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+      var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
+      var authorizeButton = document.getElementById('authorize_button');
+
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+        });
+      }
+
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          checkDate();
+          makeApiCall();
+        } else {
+          authorizeButton.style.display = 'block';
+        }
+      }
+
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+
+       var meetingDate = new date();
+      function checkDate() {
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',
+          range: 'Meetings!A1:A',
+        }).then(function(response) {
+          var range = response.result;
+          console.log(range.values.length);
+            for (i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+              appendPre(row[0]);
+              if(row[0].toLocaleDateString()==meetingDate.toLocaleDateString())
+            }
+
+        }, function(response) {
+          console.log('Error: ' + response.result.error.message);
+        });
+      }
+
+
+      function makeApiCall() {
+        var params = {
+          spreadsheetId: '1sk5Ag77kOqzJPPayTsg-UliUsGZomEZHKNqhdloBw3Y',  // TODO: Update placeholder value.
+          range: 'Meetings!A1:D1',
+          valueInputOption: 'USER_ENTERED',
+          insertDataOption: 'INSERT_ROWS',
+        };
+        var d = new Date();
+        var valueRangeBody = {
+          "range": "Meetings!A1:D1",
+          "majorDimension": "ROWS",
+          "values": [
+            [d.toLocaleDateString(), "to do stuff", d.getHours()+":"+d.getMinutes(), d.getHours()+":"+d.getMinutes()]
+          ],
+        };
+
+        var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+        request.then(function(response) {
+          // TODO: Change code below to process the `response` object:
+          console.log(response.result);
+        }, function(reason) {
+          console.error('error: ' + reason.result.error.message);
+        });
+      }
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>

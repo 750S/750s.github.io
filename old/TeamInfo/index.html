@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <title>750 Sparks</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">750 Sparks</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sponsors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Empty</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Empty1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Empty2</a>
+      </li>
+    </ul>
+  </div>
+  <form class="form-inline">
+    <a href="http://750s.github.io"><button id="sign-out" class="btn btn-bg btn-outline-secondary" type="button">Return to Home Page</button></a>
+  </form>
+</nav>
+<button id="authorize_button" style="display: none;">Authorize</button>
+
+  <div class = "container-fluid" id="signInForm">
+  <h3 class="text-center" style = "padding-bottom:10px; padding-top:12px;">Sign In: (OLD)</h3>
+    <div class = "text-center" style = "margin-top:20px;">
+      <div class="form-group row form-inline text-center">
+        <div class="col-12">
+          <select class="custom-select text-center" id="name">
+            <option selected>Select Name</option>
+              <option value="Karthik">Karthik</option>
+              <option value="Nicholas">Nicholas</option>
+              <option value="Suchit">Suchit</option>
+              <option value="Tanav">Tanav</option>
+              <option value="Vijay">Vijay</option>
+              <option value="Suhruth">Suhruth</option>
+              <option value="Jason">Jason</option>
+              <option value="Tejas">Tejas</option>
+              <option value="Abimanyu">Abimanyu</option>
+              <option value="Sameer">Sameer</option>
+              <option value="Saurav">Saurav</option>
+              <option value="Srivatsan">Srivatsan</option>
+              <option value="Anurag">Anurag</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row form-inline">
+        <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
+          <label for="date-input" class="col-form-label" style="display:inline; ">Date:</label>
+          <input class="form-control" type="date"  style="display:inline; margin-top:6px;" id="date-input">
+        </div>
+        <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
+          <label for="example-time-input" class="col-form-label" style="display:inline;">Time In:</label>
+          <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="start-time-input">
+          <button class="form-control" type="checkbox" style="display:inline; margin-top:6px;" onclick="ontimeIN()">Set to meeting start?</button>
+        </div>
+        <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
+          <label for="example-time-input" class="col-form-label" style="display:inline;">Time Out:</label>
+          <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="end-time-input">
+          <button class="form-control" type="checkbox" style="display:inline; margin-top:6px;" onclick="ontimeOut()">Set to meeting end?</button>
+        </div>
+        <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
+          <label for="example-time-input" class="col-form-label" style="display:inline;">Meeting Start Time:</label>
+          <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="meeting-start-time-input">
+        </div>
+        <div class="col-12" style = "padding-top:5px; padding-bottom:5px;">
+          <label for="example-time-input" class="col-form-label" style="display:inline;">Meeting End Time:</label>
+          <input class="form-control" type="time" style="display:inline; margin-top:6px;" id="meeting-end-time-input">
+        </div>
+        <div class="col-12">
+          <label for="example-text-input" class="col-2 col-form-label" style="display:inline;">Meeting Purpose:</label>
+          <input class="form-control" type="text" placeholder="Enter Here" style="display:inline; margin-top:6px;" id="purpose-text-input">
+        </div>
+      </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+    <script src="app.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>
