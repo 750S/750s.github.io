@@ -19,7 +19,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       console.log(validUser);
       if(validUser){
           console.log(user.displayName.split(' ')[0]);
-          names=["Karthik","Nicholas","Tanav","Suchit","Jason","Suhruth","Abimanyu","Vijay","Tejas","Sanaa","Sharvani"];
+          names=["Karthik","Nicholas","Tanav","Suchit","Jason","Suhruth","Abimanyu","Vijay","Tejas"];
           for(let z =0;z!=9;z++)
             if(names[z]==user.displayName.split(' ')[0]){
               name.value=names[z];
